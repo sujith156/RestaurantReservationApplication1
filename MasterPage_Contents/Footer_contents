@@ -1,0 +1,26 @@
+<div class="container-fluid bg-4 text-center">
+    <div class="container" style="padding:0;margin:0">
+        <div class="row">
+            <div class="col-sm-4">
+                <p><span style="color:brown">Opening hours</span></p>
+                <p class="font_7">Mon:&nbsp;&nbsp; 11:00am - 11:00pm</p>
+                <p class="font_7">Tue: &nbsp; &nbsp; 11:00am - 11:00pm</p>
+                <p class="font_7">Wed: &nbsp;&nbsp; 11:00am - 11:00pm</p>
+                <p class="font_7">Thurs:&nbsp; 11:00am - 11:00pm</p>
+                <p class="font_7">Fri: &nbsp; &nbsp; &nbsp; &nbsp;11:00pm - &nbsp;5:00pm</p>
+            </div>
+            <div class="col-sm-4">
+                <p class="font_8"><span style="color:brown">Contact Details</span></p>
+                <p class="font_7">XXX Street</p>
+                <p class="font_7">Akron</p>
+                <p class="font_7">Ohio 44394<br>
+                    T: 123-456-7890<br>
+                    F: 123-456-7890</p></div>
+            <div class="col-sm-4">
+                <p class="font_8"><span style="color:brown">Reservations</span></p>
+                <p class="font_7">Lunch: &nbsp;11:00am - &nbsp;4:30pm</p>
+                <p class="font_7">Dinner: &nbsp;4:30pm - 10:30pm</p>
+
+        </div>
+    </div>
+</div>
