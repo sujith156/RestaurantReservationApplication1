@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Restaurant Reservation System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="Styles/myStyle.css">
+    <link rel="stylesheet" href="Styles/tilesStyle.css">
+</head>
+<body onload="addHeader();addFooter()">
+<header id="header">
+</header>
+<section>
+    <div class="container">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12" style="color: black;text-align: center">
+                    <h1><strong><i class="fa fa-home"></i>&nbsp;Owner - Home</strong></h1>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="ViewReservations_owner.html" style="color: black">
+                        <div class="tile purple">
+                            <h4 class="title"><span class="glyphicon glyphicon-calendar"></span>&nbspView Reservations</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="CreateReservations_guest.html" style="color: black">
+                        <div class="tile blue">
+                            <h4 class="title"><span class="glyphicon glyphicon-calendar"></span>&nbspCreate Reservation</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="seatingStatus_owner.html" style="color: black">
+                        <div class="tile gray">
+                            <h4 class="title"><span class="glyphicon glyphicon-th"></span>&nbsp;Seating</h4>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <a href="profile_owner.html" style="color: black">
+                        <div class="tile orange">
+                            <h4 class="title"><span class="glyphicon glyphicon-list"></span>&nbsp;Profile</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6">
+                    <a href="contacts_owner.html" style="color: black">
+                    <div class="tile green">
+                        <h4 class="title"><span class="glyphicon glyphicon-user"></span>&nbsp;Contacts</h4>
+                    </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer id="footer"></footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="Scripts/place_in_outerHTML.js"></script>
+<script type="text/javascript" src="Scripts/IO.js"></script>
+<script type="text/javascript" src="Scripts/addHeader.js"></script>
+<script type="text/javascript" src="Scripts/addFooter.js"></script>
+</body>
+</html>
