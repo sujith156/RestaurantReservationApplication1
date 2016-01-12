@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ReservationmodelStoreContainer" CdmEntityContainer="ReservationDBContext">
+    <EntitySetMapping Name="tblreservations">
+      <EntityTypeMapping TypeName="Reservationmodel.tblreservation">
+        <MappingFragment StoreEntitySet="tblreservations">
+          <ScalarProperty Name="tableno" ColumnName="tableno" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="partysize" ColumnName="partysize" />
+          <ScalarProperty Name="specialnotes" ColumnName="specialnotes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spAddReservation" FunctionName="Reservationmodel.Store.spAddReservation" />
+    <FunctionImportMapping FunctionImportName="spCancelReservation" FunctionName="Reservationmodel.Store.spCancelReservation" />
+    <FunctionImportMapping FunctionImportName="spViewReservation" FunctionName="Reservationmodel.Store.spViewReservation">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Reservationmodel.spViewReservation_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="partysize" ColumnName="partysize" />
+          <ScalarProperty Name="specialnotes" ColumnName="specialnotes" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spViewReservations" FunctionName="Reservationmodel.Store.spViewReservations">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Reservationmodel.spViewReservations_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="partysize" ColumnName="partysize" />
+          <ScalarProperty Name="specialnotes" ColumnName="specialnotes" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spUpdateReservation" FunctionName="Reservationmodel.Store.spUpdateReservation" />
+    <EntitySetMapping Name="tbltables">
+      <EntityTypeMapping TypeName="Reservationmodel.tbltable">
+        <MappingFragment StoreEntitySet="tbltables">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="size" ColumnName="size" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="tableno" ColumnName="tableno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spAddReservation_AutoAssignOff" FunctionName="Reservationmodel.Store.spAddReservation_AutoAssignOff" />
+    <EntitySetMapping Name="tblProfiles">
+      <EntityTypeMapping TypeName="Reservationmodel.tblProfile">
+        <MappingFragment StoreEntitySet="tblProfile">
+          <ScalarProperty Name="timings" ColumnName="timings" />
+          <ScalarProperty Name="RestaurantAddress" ColumnName="RestaurantAddress" />
+          <ScalarProperty Name="autoassign" ColumnName="autoassign" />
+          <ScalarProperty Name="contactno" ColumnName="contactno" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spViewProfile" FunctionName="Reservationmodel.Store.spViewProfile">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Reservationmodel.spViewProfile_Result">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="contactno" ColumnName="contactno" />
+          <ScalarProperty Name="autoassign" ColumnName="autoassign" />
+          <ScalarProperty Name="RestaurantAddress" ColumnName="RestaurantAddress" />
+          <ScalarProperty Name="timings" ColumnName="timings" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spUpdateProfile" FunctionName="Reservationmodel.Store.spUpdateProfile" />
+    <FunctionImportMapping FunctionImportName="spViewContacts" FunctionName="Reservationmodel.Store.spViewContacts">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Reservationmodel.spViewContacts_Result">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spAssigntable" FunctionName="Reservationmodel.Store.spAssigntable" />
+    <EntitySetMapping Name="tblAdmins">
+      <EntityTypeMapping TypeName="Reservationmodel.tblAdmin">
+        <MappingFragment StoreEntitySet="tblAdmin">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spAuthenticateUser" FunctionName="Reservationmodel.Store.spAuthenticateUser" />
+    <FunctionImportMapping FunctionImportName="spRegisterUser" FunctionName="Reservationmodel.Store.spRegisterUser" />
+  </EntityContainerMapping>
+</Mapping>

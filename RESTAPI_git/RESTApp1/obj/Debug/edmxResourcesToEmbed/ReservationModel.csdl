@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Reservationmodel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblreservation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="phonenumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="partysize" Type="Int32" />
+    <Property Name="specialnotes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="tableno" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="ReservationDBContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblreservations" EntityType="Self.tblreservation" />
+    <FunctionImport Name="spAddReservation" ReturnType="Collection(Int32)">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="phonenumber" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="date" Mode="In" Type="String" />
+      <Parameter Name="time" Mode="In" Type="String" />
+      <Parameter Name="partysize" Mode="In" Type="Int32" />
+      <Parameter Name="specialnotes" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spCancelReservation" ReturnType="Collection(Int32)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spViewReservation" ReturnType="Collection(Reservationmodel.spViewReservation_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spViewReservations" ReturnType="Collection(Reservationmodel.spViewReservations_Result)" />
+    <FunctionImport Name="spUpdateReservation">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="phonenumber" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="date" Mode="In" Type="String" />
+      <Parameter Name="time" Mode="In" Type="String" />
+      <Parameter Name="partysize" Mode="In" Type="Int32" />
+      <Parameter Name="specialnotes" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="tbltables" EntityType="Reservationmodel.tbltable" />
+    <FunctionImport Name="spAddReservation1" ReturnType="Collection(Int32)">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="phonenumber" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="date" Mode="In" Type="String" />
+      <Parameter Name="time" Mode="In" Type="String" />
+      <Parameter Name="partysize" Mode="In" Type="Int32" />
+      <Parameter Name="specialnotes" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spAddReservation_AutoAssignOff" ReturnType="Collection(Int32)">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="phonenumber" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="date" Mode="In" Type="String" />
+      <Parameter Name="time" Mode="In" Type="String" />
+      <Parameter Name="partysize" Mode="In" Type="Int32" />
+      <Parameter Name="specialnotes" Mode="In" Type="String" />
+      <Parameter Name="tableno" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="tblProfiles" EntityType="Reservationmodel.tblProfile" />
+    <FunctionImport Name="spViewProfile" ReturnType="Collection(Reservationmodel.spViewProfile_Result)" />
+    <FunctionImport Name="spUpdateProfile">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="contactno" Mode="In" Type="String" />
+      <Parameter Name="autoassign" Mode="In" Type="String" />
+      <Parameter Name="restaurantaddress" Mode="In" Type="String" />
+      <Parameter Name="timings" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spViewContacts" ReturnType="Collection(Reservationmodel.spViewContacts_Result)" />
+    <FunctionImport Name="spAssigntable">
+      <Parameter Name="tableno" Mode="In" Type="Int32" />
+      <Parameter Name="time" Mode="In" Type="String" />
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="tblAdmins" EntityType="Reservationmodel.tblAdmin" />
+    <FunctionImport Name="spAuthenticateUser" ReturnType="Collection(Int32)">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spRegisterUser" ReturnType="Collection(Int32)">
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="spViewReservation_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="phonenumber" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="email" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="date" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="time" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="partysize" Nullable="true" />
+    <Property Type="String" Name="specialnotes" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="spViewReservations_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="phonenumber" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="email" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="date" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="time" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="partysize" Nullable="true" />
+    <Property Type="String" Name="specialnotes" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <EntityType Name="tbltable">
+    <Key>
+      <PropertyRef Name="tableno" />
+    </Key>
+    <Property Name="tableno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="size" Type="Int32" />
+    <Property Name="time" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblProfile">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="contactno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="autoassign" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="RestaurantAddress" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="timings" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="spViewProfile_Result">
+    <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="email" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="contactno" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="autoassign" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="RestaurantAddress" Nullable="true" MaxLength="2000" />
+    <Property Type="String" Name="timings" Nullable="true" MaxLength="1000" />
+  </ComplexType>
+  <ComplexType Name="spViewContacts_Result">
+    <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="phonenumber" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="email" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <EntityType Name="tblAdmin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Restaurant Reservation System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="Styles/myStyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body onload="addHeader();addFooter()">
+<header class="header" id="header">
+</header>
+<h3><i class="fa fa-cutlery"></i>&nbsp;RESERVATIONS</h3>
+<br>
+<br>
+<div class="container bg-3 text-center">
+    <div class="row">
+        <div class="col-sm-4">
+            <a href="CreateReservations_guest.html" class="image_link">Create a Reservation
+            <img src="images/4.jpg" class="img-responsive" style="width: 100%" alt="Image">
+            </a>
+        </div>
+        <div class="col-sm-4">
+            <a data-toggle="modal" data-target="#myviewModal" class="image_link" href="#">View a Reservation
+            <img src="images/9.jpg" class="img-responsive" style="width: 100%" alt="Image">
+            </a>
+        </div>
+        <div id="myviewModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="view_code">Confirmation code:</label>
+                            <input type="text" class="form-control" id="view_code" value="ASD1234">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                       <a href="ViewReservation_guest.html">
+                           <button type="submit" class="btn btn-default" id="btn_view">Submit</button>
+                       </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <a data-toggle="modal" class="image_link" data-target="#myCancelModal">Cancel Reservation
+            <img src="images/2.jpg" class="img-responsive" style="width: 100%" alt="Image">
+            </a>
+        </div>
+        <div id="myCancelModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="cancel_code">Confirmation code:</label>
+                            <input type="text" class="form-control" id="cancel_code" value="ASF1234">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="cancel_reservation.html" class="btn btn-primary" id="btn_cancel">Submit</a>
+                       <!-- <button type="submit" class="btn btn-default" id="btn_cancel">Submit</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<footer id="footer">
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="Scripts/place_in_outerHTML.js"></script>
+<script type="text/javascript" src="Scripts/IO.js"></script>
+<script type="text/javascript" src="Scripts/addHeader.js"></script>
+<script type="text/javascript" src="Scripts/addFooter.js"></script>
+</body>
+
+</html>
