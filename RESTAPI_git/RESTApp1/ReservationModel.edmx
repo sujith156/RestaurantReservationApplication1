@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Reservationmodel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAdmin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblProfile">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="contactno" Type="varchar" MaxLength="50" />
+          <Property Name="autoassign" Type="varchar" MaxLength="30" />
+          <Property Name="RestaurantAddress" Type="varchar" MaxLength="2000" />
+          <Property Name="timings" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="tblreservations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="phonenumber" Type="varchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="date" Type="varchar" MaxLength="50" />
+          <Property Name="time" Type="varchar" MaxLength="50" />
+          <Property Name="partysize" Type="int" />
+          <Property Name="specialnotes" Type="varchar" MaxLength="200" />
+          <Property Name="tableno" Type="int" />
+        </EntityType>
+        <EntityType Name="tbltables">
+          <Key>
+            <PropertyRef Name="tableno" />
+          </Key>
+          <Property Name="tableno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
+          <Property Name="size" Type="int" />
+          <Property Name="time" Type="varchar" MaxLength="20" />
+          <Property Name="id" Type="int" />
+        </EntityType>
+        <Function Name="spAddReservation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="phonenumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="email" Type="nvarchar" Mode="In" />
+          <Parameter Name="date" Type="nvarchar" Mode="In" />
+          <Parameter Name="time" Type="nvarchar" Mode="In" />
+          <Parameter Name="partysize" Type="int" Mode="In" />
+          <Parameter Name="specialnotes" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spAddReservation_AutoAssignOff" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="phonenumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="email" Type="nvarchar" Mode="In" />
+          <Parameter Name="date" Type="nvarchar" Mode="In" />
+          <Parameter Name="time" Type="nvarchar" Mode="In" />
+          <Parameter Name="partysize" Type="int" Mode="In" />
+          <Parameter Name="specialnotes" Type="varchar" Mode="In" />
+          <Parameter Name="tableno" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spAssigntable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tableno" Type="int" Mode="In" />
+          <Parameter Name="time" Type="varchar" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spAuthenticateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="email" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spCancelReservation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spRegisterUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spUpdateProfile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="contactno" Type="varchar" Mode="In" />
+          <Parameter Name="autoassign" Type="varchar" Mode="In" />
+          <Parameter Name="restaurantaddress" Type="varchar" Mode="In" />
+          <Parameter Name="timings" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spUpdateReservation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="phonenumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="email" Type="nvarchar" Mode="In" />
+          <Parameter Name="date" Type="nvarchar" Mode="In" />
+          <Parameter Name="time" Type="nvarchar" Mode="In" />
+          <Parameter Name="partysize" Type="int" Mode="In" />
+          <Parameter Name="specialnotes" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spViewContacts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spViewProfile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spViewReservation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spViewReservations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="ReservationmodelStoreContainer">
+          <EntitySet Name="tblAdmin" EntityType="Self.tblAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProfile" EntityType="Self.tblProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblreservations" EntityType="Self.tblreservations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbltables" EntityType="Self.tbltables" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Reservationmodel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblreservation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="phonenumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="partysize" Type="Int32" />
+          <Property Name="specialnotes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="tableno" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="ReservationDBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblreservations" EntityType="Self.tblreservation" />
+          <FunctionImport Name="spAddReservation" ReturnType="Collection(Int32)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="phonenumber" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="date" Mode="In" Type="String" />
+            <Parameter Name="time" Mode="In" Type="String" />
+            <Parameter Name="partysize" Mode="In" Type="Int32" />
+            <Parameter Name="specialnotes" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spCancelReservation" ReturnType="Collection(Int32)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spViewReservation" ReturnType="Collection(Reservationmodel.spViewReservation_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spViewReservations" ReturnType="Collection(Reservationmodel.spViewReservations_Result)" />
+          <FunctionImport Name="spUpdateReservation">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="phonenumber" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="date" Mode="In" Type="String" />
+            <Parameter Name="time" Mode="In" Type="String" />
+            <Parameter Name="partysize" Mode="In" Type="Int32" />
+            <Parameter Name="specialnotes" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="tbltables" EntityType="Reservationmodel.tbltable" />
+          <FunctionImport Name="spAddReservation1" ReturnType="Collection(Int32)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="phonenumber" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="date" Mode="In" Type="String" />
+            <Parameter Name="time" Mode="In" Type="String" />
+            <Parameter Name="partysize" Mode="In" Type="Int32" />
+            <Parameter Name="specialnotes" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spAddReservation_AutoAssignOff" ReturnType="Collection(Int32)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="phonenumber" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="date" Mode="In" Type="String" />
+            <Parameter Name="time" Mode="In" Type="String" />
+            <Parameter Name="partysize" Mode="In" Type="Int32" />
+            <Parameter Name="specialnotes" Mode="In" Type="String" />
+            <Parameter Name="tableno" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="tblProfiles" EntityType="Reservationmodel.tblProfile" />
+          <FunctionImport Name="spViewProfile" ReturnType="Collection(Reservationmodel.spViewProfile_Result)" />
+          <FunctionImport Name="spUpdateProfile">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="contactno" Mode="In" Type="String" />
+            <Parameter Name="autoassign" Mode="In" Type="String" />
+            <Parameter Name="restaurantaddress" Mode="In" Type="String" />
+            <Parameter Name="timings" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spViewContacts" ReturnType="Collection(Reservationmodel.spViewContacts_Result)" />
+          <FunctionImport Name="spAssigntable">
+            <Parameter Name="tableno" Mode="In" Type="Int32" />
+            <Parameter Name="time" Mode="In" Type="String" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="tblAdmins" EntityType="Reservationmodel.tblAdmin" />
+          <FunctionImport Name="spAuthenticateUser" ReturnType="Collection(Int32)">
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spRegisterUser" ReturnType="Collection(Int32)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="spViewReservation_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="phonenumber" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="date" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="time" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="partysize" Nullable="true" />
+          <Property Type="String" Name="specialnotes" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="spViewReservations_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="phonenumber" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="date" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="time" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="partysize" Nullable="true" />
+          <Property Type="String" Name="specialnotes" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <EntityType Name="tbltable">
+          <Key>
+            <PropertyRef Name="tableno" />
+          </Key>
+          <Property Name="tableno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="size" Type="Int32" />
+          <Property Name="time" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblProfile">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="contactno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="autoassign" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="RestaurantAddress" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="timings" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="spViewProfile_Result">
+          <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="contactno" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="autoassign" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="RestaurantAddress" Nullable="true" MaxLength="2000" />
+          <Property Type="String" Name="timings" Nullable="true" MaxLength="1000" />
+        </ComplexType>
+        <ComplexType Name="spViewContacts_Result">
+          <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="phonenumber" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="tblAdmin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ReservationmodelStoreContainer" CdmEntityContainer="ReservationDBContext">
+          <EntitySetMapping Name="tblreservations">
+            <EntityTypeMapping TypeName="Reservationmodel.tblreservation">
+              <MappingFragment StoreEntitySet="tblreservations">
+                <ScalarProperty Name="tableno" ColumnName="tableno" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="partysize" ColumnName="partysize" />
+                <ScalarProperty Name="specialnotes" ColumnName="specialnotes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spAddReservation" FunctionName="Reservationmodel.Store.spAddReservation" />
+          <FunctionImportMapping FunctionImportName="spCancelReservation" FunctionName="Reservationmodel.Store.spCancelReservation" />
+          <FunctionImportMapping FunctionImportName="spViewReservation" FunctionName="Reservationmodel.Store.spViewReservation">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Reservationmodel.spViewReservation_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="partysize" ColumnName="partysize" />
+                <ScalarProperty Name="specialnotes" ColumnName="specialnotes" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spViewReservations" FunctionName="Reservationmodel.Store.spViewReservations">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Reservationmodel.spViewReservations_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="partysize" ColumnName="partysize" />
+                <ScalarProperty Name="specialnotes" ColumnName="specialnotes" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spUpdateReservation" FunctionName="Reservationmodel.Store.spUpdateReservation" />
+          <EntitySetMapping Name="tbltables">
+            <EntityTypeMapping TypeName="Reservationmodel.tbltable">
+              <MappingFragment StoreEntitySet="tbltables">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="tableno" ColumnName="tableno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spAddReservation_AutoAssignOff" FunctionName="Reservationmodel.Store.spAddReservation_AutoAssignOff" />
+          <EntitySetMapping Name="tblProfiles">
+            <EntityTypeMapping TypeName="Reservationmodel.tblProfile">
+              <MappingFragment StoreEntitySet="tblProfile">
+                <ScalarProperty Name="timings" ColumnName="timings" />
+                <ScalarProperty Name="RestaurantAddress" ColumnName="RestaurantAddress" />
+                <ScalarProperty Name="autoassign" ColumnName="autoassign" />
+                <ScalarProperty Name="contactno" ColumnName="contactno" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spViewProfile" FunctionName="Reservationmodel.Store.spViewProfile">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Reservationmodel.spViewProfile_Result">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="contactno" ColumnName="contactno" />
+                <ScalarProperty Name="autoassign" ColumnName="autoassign" />
+                <ScalarProperty Name="RestaurantAddress" ColumnName="RestaurantAddress" />
+                <ScalarProperty Name="timings" ColumnName="timings" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spUpdateProfile" FunctionName="Reservationmodel.Store.spUpdateProfile" />
+          <FunctionImportMapping FunctionImportName="spViewContacts" FunctionName="Reservationmodel.Store.spViewContacts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Reservationmodel.spViewContacts_Result">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spAssigntable" FunctionName="Reservationmodel.Store.spAssigntable" />
+          <EntitySetMapping Name="tblAdmins">
+            <EntityTypeMapping TypeName="Reservationmodel.tblAdmin">
+              <MappingFragment StoreEntitySet="tblAdmin">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spAuthenticateUser" FunctionName="Reservationmodel.Store.spAuthenticateUser" />
+          <FunctionImportMapping FunctionImportName="spRegisterUser" FunctionName="Reservationmodel.Store.spRegisterUser" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
